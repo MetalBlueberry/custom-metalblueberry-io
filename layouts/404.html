@@ -1,0 +1,6 @@
+{{- define "main" -}}
+<article class="article markdown-body">
+{{ readFile "resources/404.go" | printf "```go\n%s```" | markdownify }}
+</article>
+{{- end -}}
+

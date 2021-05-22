@@ -1,0 +1,79 @@
+.article.markdown-body .admonition p {
+  margin-bottom: 20px;
+}
+
+.admonition {
+    border: 5px;
+    border-color: black;
+    box-shadow: black;
+}
+
+.admonition {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.8);
+  border-radius: 3px;
+  padding: .8em;
+}
+
+.admonition .admonition-title {
+    padding: .5em .75em .5em .5em; 
+    margin: -0.8em -0.8em .8em -0.8em;
+    font-weight: bold;
+}
+
+.admonition.info {
+  box-shadow: 0 0.15em  0.30em 0 rgba(52,164,235,0.8);
+  border-left: .25rem solid rgba(52,164,235,1);
+}
+
+.admonition.info .admonition-title {
+    background-color: rgba(212,238,255);
+}
+
+.admonition.warning {
+  box-shadow: 0 0.15em  0.30em 0 #ff910099;
+  border-left: .25rem solid  #ff9100;
+}
+
+.admonition.warning .admonition-title {
+    background-color: rgba(255,145,0,.1)
+}
+
+.admonition.warning {
+  box-shadow: 0 0.15em  0.30em 0 #ff910099;
+  border-left: .25rem solid  #ff9100;
+}
+
+.admonition.warning .admonition-title {
+    background-color: rgba(255,145,0,.1)
+}
+
+.admonition.quote {
+  box-shadow: 0 0.15em  0.30em 0 hsla(0,0%,62%,1);
+  border-left: .25rem solid  hsla(0,0%,62%,1);
+}
+
+.admonition.quote .admonition-title {
+    background-color: hsla(0,0%,62%,.1)
+}
+
+.admonition.tip {
+  box-shadow: 0 0.15em  0.30em 0 #00bfa5;
+  border-left: .25rem solid #00bfa5;
+}
+
+.admonition.tip .admonition-title {
+    background-color: rgba(0,191,165,.1)
+}
+
+.admonition.question {
+  box-shadow: 0 0.15em  0.30em 0 #64dd17;
+  border-left: .25rem solid #64dd17;
+}
+
+.admonition.question .admonition-title {
+    background-color: rgba(100,221,23,.1)
+}
+
+
+
+

@@ -1,0 +1,33 @@
+{{- define "main" -}}
+{{- $title := T .Title -}}
+{{- if not $title -}}
+{{- $title = .Title -}}
+{{- end -}}
+<section class="article header">
+    <h1>{{- $title -}}</h1>
+</section>
+{{- if .Content -}}
+<article class="article markdown-body">
+    <!-- "{{.Content}}" pulls from the markdown content of the corresponding _index.md -->
+    {{- .Content -}}
+</article>
+{{- end -}}
+
+<ul class="note list">
+    {{ range .Data.Terms.ByCount }}
+    <li class="item">
+        <a class="note" href="{{ .Page.Permalink }}">
+            <div class="note title">
+                {{- .Page.Title | safeHTML -}}
+            </div>
+            {{- if .Page.Summary -}}
+            <div class="note content">
+                {{- .Page.Summary | plainify | safeHTML -}}
+            </div>
+            {{- end -}}
+            <div class="note count">{{ range (seq .Count) }}.{{ end -}}</div>
+        </a>
+    </li>
+    {{ end }}
+</ul>
+{{- end -}}

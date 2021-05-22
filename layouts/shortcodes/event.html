@@ -1,0 +1,60 @@
+{{$to := now }}
+{{ if ne (.Get "to") ""}}
+  {{$to = time (.Get "to") }}
+{{end}}
+
+{{$from := time (.Get "from") }}
+
+{{$tmonths:=mul ($to.Sub $from).Hours 0.00136986301 }}
+{{$months := mod $tmonths 12 }}
+{{$years := math.Floor (div $tmonths 12)}}
+{{$yearStr := "years"}}
+{{if eq $years 1 }}{{$yearStr = "year"}}{{end}}
+{{$monthStr := "months"}}
+{{if eq $months 1 }}{{$monthStr = "month"}}{{end}}
+
+{{$duration := ""}}
+{{if gt $years 0 }}{{$duration = printf "%s %.0f %s" $duration $years $yearStr}}{{end}}
+{{if gt $months 0 }}{{$duration = printf "%s %d %s" $duration $months $monthStr}}{{end}}
+
+
+<div class="container">
+  <div class="content">
+    <div class="title">{{.Get "title"}}</div>
+    <div class="moment" {{ if eq .Ordinal 0 }} id="moment" {{ end }}>
+      {{ if ne .Ordinal 0 }} {{$duration}} {{ end }}
+    </div>
+    <div class="body">{{.Inner}}</div>
+  </div>
+  <div class="date">{{$from.Year}}</div>
+</div>
+{{ if eq (.Ordinal) 0 }}
+<script>
+  function non0plural(number, name) {
+    if (number == 0) {
+    return ""
+    }
+    if (number == 1 || number == -1) {
+    return number + " " +name
+    }
+    return number + " " + name + "s"
+  }
+
+  el = document.querySelector("#moment");
+  function refresh() {
+    start = dayjs({{.Get "from"}})
+    now = dayjs()
+
+    total_months = now.diff(start, "M", true)
+    months = total_months % 12
+    let years = 0
+    if (months < 0) {
+      years = Math.ceil((total_months) / 12)
+    } else {
+      years = Math.floor((total_months) / 12)
+    }
+    el.innerHTML = non0plural(years,"year")+" "+non0plural(months.toFixed(8),"month")
+  }
+  window.setInterval(refresh, 100);
+</script>
+{{ end }}
